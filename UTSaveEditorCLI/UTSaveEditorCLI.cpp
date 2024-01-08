@@ -60,8 +60,6 @@ void changeHumanName() {
 	file0.close();
 	tempFile0.close();
 
-	//remove(utIniPath);
-
 	if (rename(oldUtiniName.c_str(), newUtiniName.c_str()) != 0) {
 		cout << "Error renaming UNDERTALE.ini. Changes might not be applied." << endl;
 		cout << errno << endl;
@@ -124,6 +122,7 @@ int main() {
 	cout << "1. Change your Humans name\n2. Write a system_info file\n";
 
 	cout << "Please choose a menu option: "; cin >> menu;
+	// still working on other functions
 
 	if (menu == 1) {
 		changeHumanName();
