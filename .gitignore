@@ -398,3 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 .vscode/launch.json
 .vscode/settings.json
+
+build/
+.ccls-cache/
