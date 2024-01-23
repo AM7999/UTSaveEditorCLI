@@ -399,7 +399,7 @@ FodyWeavers.xsd
 .vscode/launch.json
 .vscode/settings.json
 
-build/
+build/bin/*
 .ccls-cache/
 .replit
 replit.nix

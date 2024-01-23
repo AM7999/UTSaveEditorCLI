@@ -1,0 +1,5 @@
+Package: UTSaveEditor
+Version: 1.0
+Maintainer: Angel Martin
+Architecture: amd64
+Description: A Simple Undertale save editor written in C++
