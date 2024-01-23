@@ -1,5 +1,5 @@
 compileLinux:
-	rm -rf ./build && mkdir ./build
+	rm -rf ./build/bin && mkdir ./build/bin
 	g++ ./UTSaveEditorCLI/UTSaveEditorCLI.cpp -o ./build/bin/UTSaveEditorCLI.x86_64
 
 runLinux:
