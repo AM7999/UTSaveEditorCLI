@@ -7,7 +7,38 @@ string utIniPath;
 string file0Path;
 string saveDirPath;
 
+void oldFun() {
+
+  ifstream utini;
+  ofstream tempUtini;
+  ifstream file0;
+  ofstream tempFile0;
+
+  string oldUtiniName = saveDirPath + "temp_utini.txt";
+  string oldFile0Name = saveDirPath + "temp_file0.txt";
+  string newFile0Name = saveDirPath + "file0";
+  string newUtiniName = saveDirPath + "undertale.ini";
+
+  utini.open(utIniPath);
+  tempUtini.open(saveDirPath + "temp_utini.txt");
+  file0.open(file0Path);
+  tempFile0.open(saveDirPath + "temp_file0.txt");
+
+  if(!tempFile0.is_open() || !tempUtini.is_open()) {
+    cout << "Could not create temporary files! Will now exit.." << endl;
+    return void;
+  } 
+  if(!file0.is_open() || !utini.is_open()) {
+    cout << "Could not open your saves! Will now exit.." << endl;
+  }
+  
+}
+
 #define clear() printf("\033[H\033[J")
+
+void changeFunValue() {
+  //cout << oldFun << endl;
+}
 
 void changeHumanName() {
 	string oldHumanName;
@@ -20,7 +51,7 @@ void changeHumanName() {
 	 string oldUtiniName = saveDirPath + "temp_utini.txt";
 	 string oldFile0Name = saveDirPath + "temp_file0.txt";
 	 string newFile0Name = saveDirPath + "file0";
-	 string newUtiniName = saveDirPath + "UNDERTALE.ini";
+	 string newUtiniName = saveDirPath + "undertale.ini";
 
 	 // string saveDirPath is declared globally
 	utini.open(utIniPath);
@@ -128,6 +159,8 @@ int main() {
 		changeHumanName();
 	} else if (menu == 2) {
 		writeSystemInfoFile();
-	}
+	} else {
+    changeFunValue();
+  }
 	return 0;
 }
