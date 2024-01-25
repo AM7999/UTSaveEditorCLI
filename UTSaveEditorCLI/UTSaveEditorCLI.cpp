@@ -1,13 +1,22 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 string utIniPath;
 string file0Path;
 string saveDirPath;
 
-void oldFun() {
+void sprint(const string& message, int milliseconds) {
+    for(char c : message) {
+        cout << c << flush;
+        this_thread::sleep_for(chrono::milliseconds(milliseconds));
+    }
+}
+
+/*void oldFun() {
 
   ifstream utini;
   ofstream tempUtini;
@@ -32,13 +41,9 @@ void oldFun() {
     cout << "Could not open your saves! Will now exit.." << endl;
   }
   
-}
+}*/
 
 #define clear() printf("\033[H\033[J")
-
-void changeFunValue() {
-  //cout << oldFun << endl;
-}
 
 void changeHumanName() {
 	string oldHumanName;
@@ -149,7 +154,9 @@ int main() {
 	cout << "Please enter the path to where your UNDERTALE saves are locted (ex. %localappdata%\\UNDERTALE)"; cin >> saveDirPath;
 	clear();
 
-	cout << "Welcome to the Undertale SAVE Editor, Where YOU are the ruler of this world" << endl;
+  sprint("Welcome to the Undertale SAVE Editor, Where YOU are the ruler of this world\n", 100);
+
+	//cout << "Welcome to the Undertale SAVE Editor, Where YOU are the ruler of this world" << endl;
 	cout << "1. Change your Humans name\n2. Write a system_info file\n";
 
 	cout << "Please choose a menu option: "; cin >> menu;
@@ -160,7 +167,7 @@ int main() {
 	} else if (menu == 2) {
 		writeSystemInfoFile();
 	} else {
-    changeFunValue();
+    //changeFunValue();
   }
 	return 0;
 }
