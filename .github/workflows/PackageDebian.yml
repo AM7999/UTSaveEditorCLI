@@ -1,0 +1,24 @@
+name: Create Debian Package
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Package deb file
+      run: make packageDebian
+
+    - name: Upload Program
+      uses: actions/upload-artifact@v2
+      with:
+        name: UTSaveEditorCLI
+        path: ./build/bin/pkg/UTSaveEditorCLI_amd64_1.0.deb
