@@ -16,32 +16,40 @@ void sprint(const string& message, int milliseconds) {
     }
 }
 
-/*void oldFun() {
+string oldFun() {
 
   ifstream utini;
-  ofstream tempUtini;
   ifstream file0;
-  ofstream tempFile0;
 
-  string oldUtiniName = saveDirPath + "temp_utini.txt";
-  string oldFile0Name = saveDirPath + "temp_file0.txt";
   string newFile0Name = saveDirPath + "file0";
   string newUtiniName = saveDirPath + "undertale.ini";
 
   utini.open(utIniPath);
-  tempUtini.open(saveDirPath + "temp_utini.txt");
   file0.open(file0Path);
-  tempFile0.open(saveDirPath + "temp_file0.txt");
 
-  if(!tempFile0.is_open() || !tempUtini.is_open()) {
-    cout << "Could not create temporary files! Will now exit.." << endl;
-    return void;
-  } 
   if(!file0.is_open() || !utini.is_open()) {
     cout << "Could not open your saves! Will now exit.." << endl;
   }
+
+  string line;
+  int lineNumber = 36;
+  for(int i = 1; i <= lineNumber; ++i) {
+    getline(file0, line);
+  }
+
+  return line;
   
-}*/
+}
+
+void changeFunValue() {
+  string oldFunValue = oldFun();
+  string newFun;
+  
+  cout << "Your current fun value is: " << oldFunValue << " What would you like to change it to?" << endl;
+  cin >> newFun;
+
+  
+}
 
 #define clear() printf("\033[H\033[J")
 
@@ -154,7 +162,7 @@ int main() {
 	cout << "Please enter the path to where your UNDERTALE saves are locted (ex. %localappdata%\\UNDERTALE)"; cin >> saveDirPath;
 	clear();
 
-  sprint("Welcome to the Undertale SAVE Editor, Where YOU are the ruler of this world\n", 100);
+  sprint("Welcome to the Undertale SAVE Editor, Where YOU are the ruler of this world\n", 10);
 
 	//cout << "Welcome to the Undertale SAVE Editor, Where YOU are the ruler of this world" << endl;
 	cout << "1. Change your Humans name\n2. Write a system_info file\n";
@@ -167,7 +175,7 @@ int main() {
 	} else if (menu == 2) {
 		writeSystemInfoFile();
 	} else {
-    //changeFunValue();
+    changeFunValue();
   }
 	return 0;
 }
