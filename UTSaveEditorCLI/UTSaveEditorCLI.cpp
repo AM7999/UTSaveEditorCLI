@@ -9,6 +9,7 @@ string utIniPath;
 string file0Path;
 string saveDirPath;
 
+// slowprint
 void sprint(const string& message, int milliseconds) {
     for(char c : message) {
         cout << c << flush;
@@ -44,11 +45,26 @@ string oldFun() {
 void changeFunValue() {
   string oldFunValue = oldFun();
   string newFun;
+
+  ifstream utini;
+  ifstream file0;
+
+  utini.open(utIniPath);
+  file0.open(file0Path);
+
+  string newFile0Name = saveDirPath + "file0";
+  string newUtiniName = saveDirPath + "undertale.ini";
   
   cout << "Your current fun value is: " << oldFunValue << " What would you like to change it to?" << endl;
   cin >> newFun;
 
-  
+  string line;
+  // int lineNumber = 36;
+  while(getline(file0, line)) {
+	  size_t pos = line.find(newFun);
+
+
+  }
 }
 
 #define clear() printf("\033[H\033[J")
@@ -60,7 +76,7 @@ void changeHumanName() {
 	ofstream tempUtini;
 	ifstream file0;
 	ofstream tempFile0;
-
+	//probably the worst use of memory but oh well
 	 string oldUtiniName = saveDirPath + "temp_utini.txt";
 	 string oldFile0Name = saveDirPath + "temp_file0.txt";
 	 string newFile0Name = saveDirPath + "file0";
@@ -120,11 +136,13 @@ void changeHumanName() {
 		cout << "file0 renamed successfully." << endl;
 	}
 
+	// i love messy code
 }
 
 void writeSystemInfoFile() {
 	int sysInfoMen;
 
+	// My mid clear macro defined at the begining of the file
 	clear();
 
 	cout << "Please enter the path to your undertale save directory NOT an individual file: "; cin >> saveDirPath;
@@ -135,6 +153,8 @@ void writeSystemInfoFile() {
 
 	string sysInfoFileName;
 	char sysInfoChar;
+
+	// Good Practice???
 	if (sysInfoMen == 1) {
 		sysInfoFileName = "system_information_962";
 		sysInfoChar = 'a';
@@ -169,13 +189,15 @@ int main() {
 
 	cout << "Please choose a menu option: "; cin >> menu;
 	// still working on other functions
+	// should i just turn the whole thing into one big ol'e array since its just a string of letters and numbers?
+	// nah
 
 	if (menu == 1) {
 		changeHumanName();
 	} else if (menu == 2) {
 		writeSystemInfoFile();
 	} else {
-    changeFunValue();
-  }
+		changeFunValue();
+	}
 	return 0;
 }

@@ -1,0 +1,7 @@
+{
+  "packageName": "UTSaveEditor",
+  "version": "1.0",
+  "maintainer": "Angel Martin",
+  "arch": "amd64",
+  "longDesc": "A Simple Undertale save editor written in C++"
+}
